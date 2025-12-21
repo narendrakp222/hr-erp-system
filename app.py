@@ -70,5 +70,5 @@ def save():
 
     return render_template('admin_registration_succes.html')
 
-erp.run(debug=True)
+erp.run(host='0.0.0.0',debug=True)
 
