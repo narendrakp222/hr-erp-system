@@ -94,11 +94,15 @@ def save():
 
     return render_template('admin_registration_succes.html')
 
+<<<<<<< HEAD
 # ================= PROFILE =================
 @erp.route('/profile')
 def profile():
     if not admin_required():
         return redirect(url_for('adminlogin'))
+=======
+erp.run(host='0.0.0.0',debug=True)
+>>>>>>> 394b3bb56de1294e965e5483254d59ab162b094b
 
     emp_id = request.args.get('eid')
 
