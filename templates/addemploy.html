@@ -1,75 +1,135 @@
 {% include 'adminheader.html' %}
-		<div id="page">
-			<div id="page-bgtop">
-				<div id="page-bgbtm">
-					<div id="page-content">
-						<div id="content">
-							<div class="post">
-								<h2 class="title"><a href="#">Employee Registration Form </a></h2>
-								<form action="/save" method="post">
-      Emp ID: <input type="text" name="txtEmpID" class="form-control">
-	  <br>
-      Name: <input type="text" name="txtName" class="form-control">
-	  <br>
-      Email: <input type="text" name="txtEmailID" class="form-control">
-	  <br>
-      Mobile: <input type="text" name="txtMobile" class="form-control">
-	  <br>
-      Designation: <input type="text" name="txtDesignation" class="form-control">
-	  <br>
-      Salary:<input type="text" name="txtSalary" class="form-control">
-	  <br>
 
-	  <input type="submit">
-</form>
+<div id="page">
+	<div id="page-bgtop">
+		<div id="page-bgbtm">
+			<div id="page-content">
 
+				<!-- MAIN CONTENT -->
+				<div id="content">
+					<div class="post">
+						<h2 class="title">Employee Registration</h2>
+						<hr>
 
-							</div>
-							<div style="clear: both;">&nbsp;</div>
-						</div>
-						<!-- end #content -->
-						<div id="sidebar">
-							<ul>
-								<li>
-									<h2>Dashboard</h2>
-                                     <img src="/static/images/images.jpg" alt="">
-                                </li>
-								<li>
-									<h2>Categories</h2>
-									<ul>
-										<li><a href="#">Aliquam libero</a></li>
-										<li><a href="#">Consectetuer adipiscing elit</a></li>
-										<li><a href="#">Metus aliquam pellentesque</a></li>
-										<li><a href="#">Suspendisse iaculis mauris</a></li>
-										<li><a href="#">Urnanet non molestie semper</a></li>
-										<li><a href="#">Proin gravida orci porttitor</a></li>
-									</ul>
-								</li>
-								<li>
-									<h2>Archives</h2>
-									<ul>
-										<li><a href="#">Aliquam libero</a></li>
-										<li><a href="#">Consectetuer adipiscing elit</a></li>
-										<li><a href="#">Metus aliquam pellentesque</a></li>
-										<li><a href="#">Suspendisse iaculis mauris</a></li>
-										<li><a href="#">Urnanet non molestie semper</a></li>
-										<li><a href="#">Proin gravida orci porttitor</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-						<!-- end #sidebar -->
+						<p style="margin-bottom:25px;">
+							Fill in the employee details below to register a new employee
+							in the HR ERP system.
+						</p>
+
+						<form action="/save" method="post"
+							style="max-width:650px;margin:40px auto;padding:30px;
+							background:linear-gradient(135deg,#f5f7ff,#ffffff);
+							border-radius:15px;
+							box-shadow:0 15px 40px rgba(0,0,0,0.15);
+							font-family:Segoe UI,Arial;">
+
+							<h2 style="text-align:center;margin-bottom:25px;color:#333;">
+								Add New Employee
+							</h2>
+
+							<label style="font-weight:600;">Full Name</label>
+							<input type="text" name="txtName" required
+								placeholder="Enter employee full name"
+								style="width:100%;padding:12px 16px;font-size:16px;
+								margin:8px 0 18px 0;border-radius:10px;
+								border:2px solid #6c63ff;outline:none;
+								background:#f9f9ff;
+								box-shadow:0 4px 10px rgba(108,99,255,0.15);">
+
+							<label style="font-weight:600;">Email Address</label>
+							<input type="email" name="txtEmailID" required
+								placeholder="example@company.com"
+								style="width:100%;padding:12px 16px;font-size:16px;
+								margin:8px 0 18px 0;border-radius:10px;
+								border:2px solid #6c63ff;outline:none;
+								background:#f9f9ff;
+								box-shadow:0 4px 10px rgba(108,99,255,0.15);">
+
+							<label style="font-weight:600;">Mobile Number</label>
+							<input type="text" name="txtMobile" required
+								placeholder="Enter contact number"
+								style="width:100%;padding:12px 16px;font-size:16px;
+								margin:8px 0 18px 0;border-radius:10px;
+								border:2px solid #6c63ff;outline:none;
+								background:#f9f9ff;
+								box-shadow:0 4px 10px rgba(108,99,255,0.15);">
+
+							<label style="font-weight:600;">Designation</label>
+							<input type="text" name="txtDesignation" required
+								placeholder="e.g. Software Engineer, HR Manager"
+								style="width:100%;padding:12px 16px;font-size:16px;
+								margin:8px 0 18px 0;border-radius:10px;
+								border:2px solid #6c63ff;outline:none;
+								background:#f9f9ff;
+								box-shadow:0 4px 10px rgba(108,99,255,0.15);">
+
+							<label style="font-weight:600;">Monthly Salary</label>
+							<input type="number" name="txtSalary" required
+								placeholder="Enter salary amount"
+								style="width:100%;padding:12px 16px;font-size:16px;
+								margin:8px 0 25px 0;border-radius:10px;
+								border:2px solid #6c63ff;outline:none;
+								background:#f9f9ff;
+								box-shadow:0 4px 10px rgba(108,99,255,0.15);">
+
+							<input type="submit" value="Save Employee"
+								style="width:100%;padding:14px;
+								font-size:16px;font-weight:600;
+								border:none;border-radius:30px;
+								cursor:pointer;color:white;
+								background:linear-gradient(135deg,#6c63ff,#5146ff);
+								box-shadow:0 6px 18px rgba(108,99,255,0.4);">
+						</form>
+
 					</div>
 					<div style="clear: both;">&nbsp;</div>
 				</div>
-			</div>
-		</div>
-		<!-- end #page -->
-	</div>
-	<div id="footer">
-		<p>Copyright (c) 2025 NarendraSolution All rights reserved. Design by .</p>
-	</div>
-	<!-- end #footer -->
-</body>
 
+				<!-- SIDEBAR -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<h2>FORM GUIDELINES</h2>
+							<p>
+								Please ensure all employee details are correct
+								before submitting the form.
+							</p>
+						</li>
+
+						<li>
+							<h2>QUICK LINKS</h2>
+							<ul>
+								<li><a href="/admindashboard">Dashboard</a></li>
+								<li><a href="/showemployee">View Employees</a></li>
+								<li><a href="/searchemp">Search Employee</a></li>
+								<li><a href="/logout">Logout</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<h2>SYSTEM INFO</h2>
+							<ul>
+								<li>Secure Data Entry</li>
+								<li>MySQL Database</li>
+								<li>Flask Backend</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer">
+	<p>
+		© 2026 HR ERP System | Developed by Narendra Paswan |
+		Flask & MySQL Project
+	</p>
+</div>
+
+</body>
 </html>

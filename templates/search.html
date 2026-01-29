@@ -32,11 +32,11 @@ th {
 				<div id="content">
 					<div class="post">
 
-						<h2 class="title">Employee Records</h2>
+						<h2 class="title">Search Results</h2>
 						<hr>
 
 						<p style="margin-bottom:20px;">
-							Below is the list of all employees registered in the HR ERP system.
+							Below are the employees matching your search criteria.
 						</p>
 
 						<table>
@@ -47,7 +47,7 @@ th {
 								<th>Action</th>
 							</tr>
 
-							{% for i in recordlist %}
+							{% for i in emplist %}
 							<tr>
 								<td>{{ i[0] }}</td>
 								<td>{{ i[1] }}</td>
@@ -65,10 +65,10 @@ th {
 							</tr>
 							{% endfor %}
 
-							{% if recordlist|length == 0 %}
+							{% if emplist|length == 0 %}
 							<tr>
 								<td colspan="4" style="text-align:center;">
-									No employee records found.
+									No employees found for the given search.
 								</td>
 							</tr>
 							{% endif %}
@@ -82,10 +82,10 @@ th {
 				<div id="sidebar">
 					<ul>
 						<li>
-							<h2>RECORD MANAGEMENT</h2>
+							<h2>SEARCH INFO</h2>
 							<p>
-								Click on <strong>View Profile</strong> to see
-								detailed employee information.
+								Search results are filtered based on
+								employee name or designation.
 							</p>
 						</li>
 
@@ -94,7 +94,7 @@ th {
 							<ul>
 								<li><a href="/admindashboard">Dashboard</a></li>
 								<li><a href="/addemployee">Add Employee</a></li>
-								<li><a href="/searchemp">Search Employee</a></li>
+								<li><a href="/showemployee">View Employees</a></li>
 								<li><a href="/logout">Logout</a></li>
 							</ul>
 						</li>
@@ -104,7 +104,7 @@ th {
 							<ul>
 								<li>Flask Backend</li>
 								<li>MySQL Database</li>
-								<li>Secure Sessions</li>
+								<li>Session Based Auth</li>
 							</ul>
 						</li>
 					</ul>

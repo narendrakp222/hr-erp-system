@@ -1,58 +1,107 @@
 {% include 'adminheader.html' %}
-		<div id="page">
-			<div id="page-bgtop">
-				<div id="page-bgbtm">
-					<div id="page-content">
-						<div id="content">
-							<div class="post">
-								<h2 class="title"><a href="#">WELCOME TO ADMIN DASHBOARD </a></h2>
 
+<div id="page">
+	<div id="page-bgtop">
+		<div id="page-bgbtm">
+			<div id="page-content">
+
+				<!-- MAIN CONTENT -->
+				<div id="content">
+					<div class="post">
+						<h2 class="title">Admin Dashboard</h2>
+						<hr>
+
+						<p style="font-size:16px;">
+							Welcome <strong>{{ session['name'] }}</strong>,
+							you are logged in as <strong>HR Administrator</strong>.
+						</p>
+
+						<p>
+							From this dashboard, you can manage employees,
+							view records, and perform administrative operations.
+						</p>
+
+						<!-- DASHBOARD CARDS -->
+						<div style="display:flex;gap:20px;margin-top:30px;flex-wrap:wrap;">
+
+							<div style="flex:1;min-width:200px;
+							background:#f5f7ff;padding:20px;
+							border-radius:12px;
+							box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+								<h3>Total Employees</h3>
+								<p style="font-size:26px;font-weight:bold;color:#6c63ff;">
+									{{ total_employees if total_employees else '—' }}
+								</p>
 							</div>
-							<div style="clear: both;">&nbsp;</div>
+
+							<div style="flex:1;min-width:200px;
+							background:#f5f7ff;padding:20px;
+							border-radius:12px;
+							box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+								<h3>Active Sessions</h3>
+								<p style="font-size:26px;font-weight:bold;color:#6c63ff;">
+									1
+								</p>
+							</div>
+
+							<div style="flex:1;min-width:200px;
+							background:#f5f7ff;padding:20px;
+							border-radius:12px;
+							box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+								<h3>System Status</h3>
+								<p style="font-size:18px;font-weight:600;color:green;">
+									Running
+								</p>
+							</div>
+
 						</div>
-						<!-- end #content -->
-						<div id="sidebar">
-							<ul>
-								<li>
-									<h2>Dashboard</h2>
-                                     <img src="/static/images/images.jpg" alt="">
-                                </li>
-								<li>
-									<h2>Categories</h2>
-									<ul>
-										<li><a href="#">Aliquam libero</a></li>
-										<li><a href="#">Consectetuer adipiscing elit</a></li>
-										<li><a href="#">Metus aliquam pellentesque</a></li>
-										<li><a href="#">Suspendisse iaculis mauris</a></li>
-										<li><a href="#">Urnanet non molestie semper</a></li>
-										<li><a href="#">Proin gravida orci porttitor</a></li>
-									</ul>
-								</li>
-								<li>
-									<h2>Archives</h2>
-									<ul>
-										<li><a href="#">Aliquam libero</a></li>
-										<li><a href="#">Consectetuer adipiscing elit</a></li>
-										<li><a href="#">Metus aliquam pellentesque</a></li>
-										<li><a href="#">Suspendisse iaculis mauris</a></li>
-										<li><a href="#">Urnanet non molestie semper</a></li>
-										<li><a href="#">Proin gravida orci porttitor</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-						<!-- end #sidebar -->
+
 					</div>
 					<div style="clear: both;">&nbsp;</div>
 				</div>
-			</div>
-		</div>
-		<!-- end #page -->
-	</div>
-	<div id="footer">
-		<p>Copyright (c) 2025 NarendraSolution All rights reserved. Design by .</p>
-	</div>
-	<!-- end #footer -->
-</body>
+				<!-- end #content -->
 
-</html>
+				<!-- SIDEBAR -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<h2>ADMIN PROFILE</h2>
+							<p>
+								Name: {{ session['name'] }} <br>
+								Role: HR Administrator
+							</p>
+						</li>
+
+						<li>
+							<h2>QUICK ACTIONS</h2>
+							<ul>
+								<li><a href="/addemployee">Add New Employee</a></li>
+								<li><a href="/showemployee">View Employees</a></li>
+								<li><a href="/searchemp">Search Employee</a></li>
+								<li><a href="/logout">Logout</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<h2>SYSTEM INFO</h2>
+							<ul>
+								<li>Backend: Flask</li>
+								<li>Database: MySQL</li>
+								<li>Authentication: Session</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+	</div>
+</div>
+<!-- end #page -->
+
+<!-- FOOTER -->
+<div id="footer">
+	<p>
+		© 2026 HR ERP Sy

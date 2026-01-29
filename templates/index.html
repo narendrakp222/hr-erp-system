@@ -1,102 +1,134 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-Name       : ElegantBlue
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20120108
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta name="keywords" content="" />
-	<meta name="description" content="" />
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>Elegantblue by FCT</title>
-	<link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css" />
-	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-	<link href="./static/style.css" rel="stylesheet" type="text/css" media="screen" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>HR ERP System | Home</title>
+
+	<meta name="description" content="HR ERP System built using Flask and MySQL">
+	<meta name="keywords" content="HR ERP, Employee Management, Flask Project">
+
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+
+	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
 </head>
 
 <body>
 	<div id="wrapper">
+
+		<!-- HEADER -->
 		<div id="header-wrapper">
 			<div id="header">
 				<div id="logo">
-					<h1><a href="#">HR ERP SYSTEM</a></h1>
-					<p>Made By NP</p>
+					<h1><a href="/">HR ERP SYSTEM</a></h1>
+					<p>Employee Management Platform</p>
 				</div>
 			</div>
 		</div>
-		<!-- end #header -->
+
+		<!-- MENU -->
 		<div id="menu-wrapper">
 			<div id="menu">
 				<ul>
-					<li class="current_page_item"><a href="#">Home</a></li>
-					<li><a href="/about">About</a></li>
+					<li class="current_page_item"><a href="/">Home</a></li>
 					<li><a href="/adminlogin">Admin Login</a></li>
-					<li><a href="/contact">Contact</a></li>
+					<li><a href="/about">System Info</a></li>
+					<li><a href="/contact">Support</a></li>
 				</ul>
 			</div>
 		</div>
-		<!-- end #menu -->
+
+		<!-- PAGE -->
 		<div id="page">
 			<div id="page-bgtop">
 				<div id="page-bgbtm">
 					<div id="page-content">
-						<div id="content">
-							<div class="post">
-								<h2 class="title"><a href="#">Welcome to NP SOLUTION </a></h2>
 
-							</div>
+						<!-- MAIN CONTENT -->
+						<div id="content">
+						<div class="post"
+     style="
+        min-height:450px;
+        padding:40px;
+        background:linear-gradient(135deg,#f5f7ff,#ffffff);
+        border-radius:18px;
+        box-shadow:0 15px 35px rgba(0,0,0,0.15);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+     ">
+
+	<h2 class="title"
+        style="
+            font-size:32px;
+            margin-bottom:25px;
+            color:#333;
+        ">
+        Welcome to HR ERP Management System
+    </h2>
+
+	<p style="
+        font-size:18px;
+        line-height:1.7;
+        color:#444;
+        margin-bottom:18px;
+    ">
+		This HR ERP system is designed to help organizations manage
+		employee records, salaries, and administrative operations
+		efficiently using a centralized platform.
+	</p>
+
+	<p style="
+        font-size:18px;
+        line-height:1.7;
+        color:#444;
+    ">
+		The system is developed using <strong>Flask</strong> and
+		<strong>MySQL</strong> with secure session-based authentication
+		for administrators.
+	</p>
+
+</div>
+
+<div style="clear: both;">&nbsp;</div>
+
 							<div style="clear: both;">&nbsp;</div>
 						</div>
-						<!-- end #content -->
+
+						<!-- SIDEBAR -->
 						<div id="sidebar">
 							<ul>
 								<li>
-									<h2></h2>Notice
-									<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper
-										consectetuer hendrerit.</p>
+									<h2>ADMIN PANEL</h2>
+									<p>
+										Only authorized HR administrators can access the system
+										to manage employees and organizational data.
+									</p>
 								</li>
+
 								<li>
-									<h2>Categories</h2>
+									<h2>SYSTEM FEATURES</h2>
 									<ul>
-										<li><a href="#">Aliquam libero</a></li>
-										<li><a href="#">Consectetuer adipiscing elit</a></li>
-										<li><a href="#">Metus aliquam pellentesque</a></li>
-										<li><a href="#">Suspendisse iaculis mauris</a></li>
-										<li><a href="#">Urnanet non molestie semper</a></li>
-										<li><a href="#">Proin gravida orci porttitor</a></li>
+										<li>Employee Registration</li>
+										<li>View Employee Records</li>
+										<li>Search Employee</li>
+										<li>Session-based Login</li>
+										<li>Secure Logout</li>
 									</ul>
 								</li>
+
 								<li>
-									<h2>Archives</h2>
+									<h2>TECH STACK</h2>
 									<ul>
-										<li><a href="#">Aliquam libero</a></li>
-										<li><a href="#">Consectetuer adipiscing elit</a></li>
-										<li><a href="#">Metus aliquam pellentesque</a></li>
-										<li><a href="#">Suspendisse iaculis mauris</a></li>
-										<li><a href="#">Urnanet non molestie semper</a></li>
-										<li><a href="#">Proin gravida orci porttitor</a></li>
+										<li>Flask (Python)</li>
+										<li>MySQL Database</li>
+										<li>HTML & CSS</li>
+										<li>Session Management</li>
 									</ul>
 								</li>
 							</ul>
 						</div>
-						<!-- end #sidebar -->
-					</div>
-					<div style="clear: both;">&nbsp;</div>
-				</div>
-			</div>
-		</div>
-		<!-- end #page -->
-	</div>
-	<div id="footer">
-		<p>Copyright (c) 2025 NarendraSolution All rights reserved. Design by .</p>
-	</div>
-	<!-- end #footer -->
-</body>
 
-</html>
+					</div>

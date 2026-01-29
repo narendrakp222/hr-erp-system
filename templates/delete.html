@@ -1,0 +1,108 @@
+{% include 'adminheader.html' %}
+
+<div id="page">
+	<div id="page-bgtop">
+		<div id="page-bgbtm">
+			<div id="page-content">
+
+				<!-- MAIN CONTENT -->
+				<div id="content">
+					<div class="post">
+
+						<h2 class="title">Operation Successful</h2>
+						<hr>
+
+						<div style="
+							max-width:600px;
+							margin:60px auto;
+							padding:30px;
+							background:#fff5f5;
+							border-radius:15px;
+							text-align:center;
+							box-shadow:0 12px 30px rgba(0,0,0,0.15);
+						">
+
+							<h3 style="color:#d63031;margin-bottom:15px;">
+								✔ Employee Record Deleted Successfully
+							</h3>
+
+							<p style="font-size:16px;">
+								The selected employee record has been permanently
+								removed from the HR ERP system.
+							</p>
+
+							<div style="margin-top:30px;">
+								<a href="/showemployee"
+								   style="padding:10px 22px;
+								   background:#6c63ff;
+								   color:white;
+								   text-decoration:none;
+								   border-radius:25px;
+								   margin-right:10px;">
+									View Employee List
+								</a>
+
+								<a href="/admindashboard"
+								   style="padding:10px 22px;
+								   background:#04AA6D;
+								   color:white;
+								   text-decoration:none;
+								   border-radius:25px;">
+									Go to Dashboard
+								</a>
+							</div>
+
+						</div>
+
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+
+				<!-- SIDEBAR -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<h2>IMPORTANT NOTE</h2>
+							<p>
+								Deleted employee records cannot be recovered.
+								Please ensure deletions are performed carefully.
+							</p>
+						</li>
+
+						<li>
+							<h2>QUICK LINKS</h2>
+							<ul>
+								<li><a href="/admindashboard">Dashboard</a></li>
+								<li><a href="/addemployee">Add Employee</a></li>
+								<li><a href="/showemployee">View Employees</a></li>
+								<li><a href="/logout">Logout</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<h2>SYSTEM INFO</h2>
+							<ul>
+								<li>Flask Backend</li>
+								<li>MySQL Database</li>
+								<li>Secure Sessions</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer">
+	<p>
+		© 2026 HR ERP System | Developed by Narendra Paswan |
+		Flask & MySQL Project
+	</p>
+</div>
+
+</body>
+</html>

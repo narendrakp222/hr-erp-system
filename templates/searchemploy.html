@@ -1,58 +1,107 @@
 {% include 'adminheader.html' %}
-		<div id="page">
-			<div id="page-bgtop">
-				<div id="page-bgbtm">
-					<div id="page-content">
-						<div id="content">
-							<div class="post">
-								<h2 class="title"><a href="#">Search Employee</a></h2>
 
-							</div>
-							<div style="clear: both;">&nbsp;</div>
-						</div>
-						<!-- end #content -->
-						<div id="sidebar">
-							<ul>
-								<li>
-									<h2>Dashboard</h2>
-                                     <img src="/static/images/images.jpg" alt="">
-                                </li>
-								<li>
-									<h2>Categories</h2>
-									<ul>
-										<li><a href="#">Aliquam libero</a></li>
-										<li><a href="#">Consectetuer adipiscing elit</a></li>
-										<li><a href="#">Metus aliquam pellentesque</a></li>
-										<li><a href="#">Suspendisse iaculis mauris</a></li>
-										<li><a href="#">Urnanet non molestie semper</a></li>
-										<li><a href="#">Proin gravida orci porttitor</a></li>
-									</ul>
-								</li>
-								<li>
-									<h2>Archives</h2>
-									<ul>
-										<li><a href="#">Aliquam libero</a></li>
-										<li><a href="#">Consectetuer adipiscing elit</a></li>
-										<li><a href="#">Metus aliquam pellentesque</a></li>
-										<li><a href="#">Suspendisse iaculis mauris</a></li>
-										<li><a href="#">Urnanet non molestie semper</a></li>
-										<li><a href="#">Proin gravida orci porttitor</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-						<!-- end #sidebar -->
+<div id="page">
+	<div id="page-bgtop">
+		<div id="page-bgbtm">
+			<div id="page-content">
+
+				<!-- MAIN CONTENT -->
+				<div id="content">
+					<div class="post">
+
+						<h2 class="title">Search Employee</h2>
+						<hr>
+
+						<p style="margin-bottom:30px;">
+							Search employee records by name or designation.
+						</p>
+
+						<form action="/search" method="post"
+							style="max-width:500px;
+							margin:40px auto;
+							padding:30px;
+							background:#f5f7ff;
+							border-radius:15px;
+							box-shadow:0 12px 30px rgba(0,0,0,0.15);
+							font-family:Segoe UI,Arial;">
+
+							<label style="font-weight:600;font-size:16px;">
+								Employee Name / Designation
+							</label>
+
+							<input type="text" name="name" required
+								placeholder="Enter employee name or designation"
+								style="width:100%;
+								padding:14px 18px;
+								font-size:18px;
+								margin:15px 0 25px 0;
+								border-radius:10px;
+								border:2px solid #6c63ff;
+								outline:none;
+								background:#ffffff;
+								box-shadow:0 4px 10px rgba(108,99,255,0.15);">
+
+							<input type="submit" value="Search Employee"
+								style="width:100%;
+								padding:12px;
+								background:linear-gradient(135deg,#6c63ff,#5146ff);
+								color:white;
+								border:none;
+								border-radius:30px;
+								font-size:18px;
+								cursor:pointer;
+								box-shadow:0 6px 18px rgba(108,99,255,0.4);">
+						</form>
+
 					</div>
 					<div style="clear: both;">&nbsp;</div>
 				</div>
-			</div>
-		</div>
-		<!-- end #page -->
-	</div>
-	<div id="footer">
-		<p>Copyright (c) 2025 NarendraSolution All rights reserved. Design by .</p>
-	</div>
-	<!-- end #footer -->
-</body>
 
+				<!-- SIDEBAR -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<h2>SEARCH TIPS</h2>
+							<p>
+								You can search employees using
+								full name, partial name, or designation.
+							</p>
+						</li>
+
+						<li>
+							<h2>QUICK LINKS</h2>
+							<ul>
+								<li><a href="/admindashboard">Dashboard</a></li>
+								<li><a href="/addemployee">Add Employee</a></li>
+								<li><a href="/showemployee">View Employees</a></li>
+								<li><a href="/logout">Logout</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<h2>SYSTEM INFO</h2>
+							<ul>
+								<li>Flask Backend</li>
+								<li>MySQL Database</li>
+								<li>Session Based Authentication</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer">
+	<p>
+		© 2026 HR ERP System | Developed by Narendra Paswan |
+		Flask & MySQL Project
+	</p>
+</div>
+
+</body>
 </html>

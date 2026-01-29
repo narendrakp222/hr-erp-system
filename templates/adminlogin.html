@@ -1,69 +1,119 @@
 {% include 'header.html' %}
-		<div id="page">
-			<div id="page-bgtop">
-				<div id="page-bgbtm">
-					<div id="page-content">
-						<div id="content">
-							<div class="post">
-								<h2 class="title"><a href="#">Admin Login </a></h2>
-                                <hr>
-                                <form action="/admindashboard" method="get">
-                                 Username <input type="text" name="username">
-                                <br><br>
-                                Password <input type="password" name="password">
-                                <br><br>
-                                <hr>
-                                <input style="padding: 10px 20px; background-color: blue; color: white; border-radius: 5px; border: none; outline: none;" type="submit" value="Login">
-                                </form>
-                              
 
-							</div>
-							<div style="clear: both;">&nbsp;</div>
-						</div>
-						<!-- end #content -->
-						<div id="sidebar">
-							<ul>
-								<li>
-									<h2></h2>Notice
-									<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper
-										consectetuer hendrerit.</p>
-								</li>
-								<li>
-									<h2>Categories</h2>
-									<ul>
-										<li><a href="#">Aliquam libero</a></li>
-										<li><a href="#">Consectetuer adipiscing elit</a></li>
-										<li><a href="#">Metus aliquam pellentesque</a></li>
-										<li><a href="#">Suspendisse iaculis mauris</a></li>
-										<li><a href="#">Urnanet non molestie semper</a></li>
-										<li><a href="#">Proin gravida orci porttitor</a></li>
-									</ul>
-								</li>
-								<li>
-									<h2>Archives</h2>
-									<ul>
-										<li><a href="#">Aliquam libero</a></li>
-										<li><a href="#">Consectetuer adipiscing elit</a></li>
-										<li><a href="#">Metus aliquam pellentesque</a></li>
-										<li><a href="#">Suspendisse iaculis mauris</a></li>
-										<li><a href="#">Urnanet non molestie semper</a></li>
-										<li><a href="#">Proin gravida orci porttitor</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-						<!-- end #sidebar -->
+<div id="page">
+	<div id="page-bgtop">
+		<div id="page-bgbtm">
+			<div id="page-content">
+
+				<!-- MAIN CONTENT -->
+				<div id="content">
+					<div class="post">
+
+						<h2 class="title">Administrator Login</h2>
+						<hr>
+
+						<p style="margin-bottom:30px;">
+							This login is restricted to authorized HR administrators only.
+							Please enter valid credentials to access the system dashboard.
+						</p>
+
+						<form action="/admindashboard" method="post"
+							style="max-width:420px;margin:60px auto;padding:30px;
+							background:linear-gradient(135deg,#f5f7ff,#ffffff);
+							border-radius:15px;
+							box-shadow:0 20px 45px rgba(0,0,0,0.2);
+							font-family:Segoe UI,Arial;">
+
+							<h2 style="text-align:center;margin-bottom:25px;color:#333;">
+								Admin Login
+							</h2>
+
+							<label style="font-weight:600;">Username</label>
+							<input type="text" name="username" required
+								placeholder="Enter admin username"
+								style="width:100%;padding:12px 16px;font-size:16px;
+								margin:8px 0 20px 0;border-radius:10px;
+								border:2px solid #6c63ff;outline:none;
+								background:#f9f9ff;color:#333;
+								box-shadow:0 4px 10px rgba(108,99,255,0.15);">
+
+							<label style="font-weight:600;">Password</label>
+							<input type="password" name="password" required
+								placeholder="Enter password"
+								style="width:100%;padding:12px 16px;font-size:16px;
+								margin:8px 0 25px 0;border-radius:10px;
+								border:2px solid #6c63ff;outline:none;
+								background:#f9f9ff;color:#333;
+								box-shadow:0 4px 10px rgba(108,99,255,0.15);">
+
+							<hr style="margin:25px 0;">
+
+							<input type="submit" value="Login"
+								style="width:100%;padding:14px;
+								font-size:16px;font-weight:600;
+								border:none;border-radius:30px;
+								cursor:pointer;color:white;
+								background:linear-gradient(135deg,#6c63ff,#5146ff);
+								box-shadow:0 8px 18px rgba(108,99,255,0.4);">
+						</form>
+
+						{% if ms %}
+							<p style="text-align:center;color:red;font-weight:600;">
+								{{ ms }}
+							</p>
+						{% endif %}
+
 					</div>
 					<div style="clear: both;">&nbsp;</div>
 				</div>
-			</div>
-		</div>
-		<!-- end #page -->
-	</div>
-	<div id="footer">
-		<p>Copyright (c) 2025 NarendraSolution All rights reserved. Design by .</p>
-	</div>
-	<!-- end #footer -->
-</body>
 
+				<!-- SIDEBAR -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<h2>SECURITY NOTICE</h2>
+							<p>
+								Unauthorized access to this system is strictly prohibited.
+								All login activities are monitored and logged.
+							</p>
+						</li>
+
+						<li>
+							<h2>ADMIN FEATURES</h2>
+							<ul>
+								<li>Employee Registration</li>
+								<li>View Employee Records</li>
+								<li>Search Employee</li>
+								<li>Secure Session Login</li>
+								<li>System Logout</li>
+							</ul>
+						</li>
+
+						<li>
+							<h2>TECH STACK</h2>
+							<ul>
+								<li>Flask (Python)</li>
+								<li>MySQL Database</li>
+								<li>HTML & CSS</li>
+								<li>Session Management</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer">
+	<p>
+		© 2026 HR ERP System | Developed by Narendra Paswan |
+		Flask & MySQL Project
+	</p>
+</div>
+
+</body>
 </html>
