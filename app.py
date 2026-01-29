@@ -41,19 +41,20 @@ def admindashboard():
         session['name'] = 'Ram'
         return render_template('admindas.html')
     else:
-        msg = "Invalid username or password"
-        return render_template('adminlogin.html', ms=msg)
+        return render_template('adminlogin.html', ms="Invalid username or password")
 
-# ================= PROTECTED ROUTES =================
+# ================= AUTH CHECK =================
 def admin_required():
     return 'login' in session and session['login']
 
+# ================= ADD EMPLOYEE =================
 @erp.route('/addemployee')
 def addemployee():
     if not admin_required():
         return redirect(url_for('adminlogin'))
     return render_template('addemploy.html')
 
+# ================= SHOW EMPLOYEES =================
 @erp.route('/showemployee')
 def showemployee():
     if not admin_required():
@@ -66,13 +67,14 @@ def showemployee():
 
     return render_template('showemploy.html', recordlist=emplist)
 
+# ================= SEARCH PAGE =================
 @erp.route('/searchemployee')
 def searchemployee():
     if not admin_required():
         return redirect(url_for('adminlogin'))
     return render_template('searchemploy.html')
 
-# ================= ADD EMPLOYEE =================
+# ================= SAVE EMPLOYEE =================
 @erp.route('/save', methods=['POST'])
 def save():
     if not admin_required():
@@ -94,15 +96,11 @@ def save():
 
     return render_template('admin_registration_succes.html')
 
-<<<<<<< HEAD
 # ================= PROFILE =================
 @erp.route('/profile')
 def profile():
     if not admin_required():
         return redirect(url_for('adminlogin'))
-=======
-erp.run(host='0.0.0.0',debug=True)
->>>>>>> 394b3bb56de1294e965e5483254d59ab162b094b
 
     emp_id = request.args.get('eid')
 
@@ -178,6 +176,6 @@ def logout():
     session.clear()
     return redirect(url_for('adminlogin'))
 
-# ================= RUN =================
+# ================= RUN APP =================
 if __name__ == '__main__':
     erp.run(debug=True)
