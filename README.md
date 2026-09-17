@@ -114,7 +114,7 @@ HR-ERP-System/
    python app.py
    ```
 
-5. Open your browser and visit → **http://127.0.0.1:5000/**
+5. Open your browser and visit → https://hr-erp-system-xdkg-a549lpaax-narendrakp222s-projects.vercel.app/
 
 ### 🔑 Default Admin Credentials
 
