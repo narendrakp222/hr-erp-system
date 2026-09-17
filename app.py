@@ -51,8 +51,14 @@ def adminlogin():
     return render_template('adminlogin.html')
 
 # ================= ADMIN LOGIN =================
-@erp.route('/admindashboard', methods=['POST'])
+@erp.route('/admindashboard', methods=['POST', 'GET'])
 def admindashboard():
+    # GET: show dashboard directly if already logged in
+    if request.method == 'GET':
+        if admin_required():
+            return render_template('admindas.html')
+        return redirect(url_for('adminlogin'))
+
     username = request.form.get('username')
     password = request.form.get('password')
 
