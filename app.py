@@ -7,8 +7,11 @@ erp = Flask(__name__)
 import os
 erp.secret_key = os.environ.get('SECRET_KEY', 'nepal')
 
-# SQLite database (works on PythonAnywhere free)
-erp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+# SQLite database — use /tmp on Vercel (only writable location in serverless)
+if os.environ.get('VERCEL'):
+    erp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/database.db'
+else:
+    erp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 erp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(erp)
@@ -22,9 +25,12 @@ class Registration(db.Model):
     designation = db.Column(db.String(100))
     salary = db.Column(db.String(20))
 
-# create table
+# create table (safe: won't crash the app if DB is unavailable)
 with erp.app_context():
-    db.create_all()
+    try:
+        db.create_all()
+    except Exception as e:
+        print('DB init warning:', e)
 
 # ================= PUBLIC ROUTES =================
 @erp.route('/')
