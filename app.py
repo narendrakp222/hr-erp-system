@@ -1,17 +1,30 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-from flask_mysqldb import MySQL
+from flask_sqlalchemy import SQLAlchemy
 
 erp = Flask(__name__)
 
 # ================= CONFIG =================
-erp.secret_key = 'nepal'
+import os
+erp.secret_key = os.environ.get('SECRET_KEY', 'nepal')
 
-erp.config['MYSQL_HOST'] = 'localhost'
-erp.config['MYSQL_USER'] = 'root'
-erp.config['MYSQL_PASSWORD'] = ''
-erp.config['MYSQL_DB'] = 'hr_erp_db'
+# SQLite database (works on PythonAnywhere free)
+erp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+erp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-mysql = MySQL(erp)
+db = SQLAlchemy(erp)
+
+# ================= MODEL =================
+class Registration(db.Model):
+    emyid = db.Column(db.Integer, primary_key=True)
+    empname = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    mobile = db.Column(db.String(20))
+    designation = db.Column(db.String(100))
+    salary = db.Column(db.String(20))
+
+# create table
+with erp.app_context():
+    db.create_all()
 
 # ================= PUBLIC ROUTES =================
 @erp.route('/')
@@ -60,19 +73,14 @@ def showemployee():
     if not admin_required():
         return redirect(url_for('adminlogin'))
 
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT emyid, empname, designation, salary FROM registration')
-    emplist = cur.fetchall()
-    cur.close()
+    emplist = Registration.query.with_entities(
+        Registration.emyid,
+        Registration.empname,
+        Registration.designation,
+        Registration.salary
+    ).all()
 
     return render_template('showemploy.html', recordlist=emplist)
-
-# ================= SEARCH PAGE =================
-@erp.route('/searchemployee')
-def searchemployee():
-    if not admin_required():
-        return redirect(url_for('adminlogin'))
-    return render_template('searchemploy.html')
 
 # ================= SAVE EMPLOYEE =================
 @erp.route('/save', methods=['POST'])
@@ -80,19 +88,16 @@ def save():
     if not admin_required():
         return redirect(url_for('adminlogin'))
 
-    n = request.form.get('txtName')
-    e = request.form.get('txtEmailID')
-    m = request.form.get('txtMobile')
-    d = request.form.get('txtDesignation')
-    s = request.form.get('txtSalary')
-
-    cur = mysql.connection.cursor()
-    cur.execute(
-        'INSERT INTO registration (empname, email, mobile, designation, salary) VALUES (%s,%s,%s,%s,%s)',
-        (n, e, m, d, s)
+    emp = Registration(
+        empname=request.form.get('txtName'),
+        email=request.form.get('txtEmailID'),
+        mobile=request.form.get('txtMobile'),
+        designation=request.form.get('txtDesignation'),
+        salary=request.form.get('txtSalary')
     )
-    mysql.connection.commit()
-    cur.close()
+
+    db.session.add(emp)
+    db.session.commit()
 
     return render_template('admin_registration_succes.html')
 
@@ -104,13 +109,7 @@ def profile():
 
     emp_id = request.args.get('eid')
 
-    cur = mysql.connection.cursor()
-    cur.execute(
-        'SELECT emyid, empname, email, mobile, designation, salary FROM registration WHERE emyid=%s',
-        (emp_id,)
-    )
-    recordlist = cur.fetchall()
-    cur.close()
+    recordlist = Registration.query.filter_by(emyid=emp_id).all()
 
     return render_template('profile.html', emplist=recordlist)
 
@@ -120,20 +119,15 @@ def update():
     if not admin_required():
         return redirect(url_for('adminlogin'))
 
-    i = request.form.get('txtEmpID')
-    n = request.form.get('txtName')
-    e = request.form.get('txtEmailID')
-    m = request.form.get('txtMobile')
-    d = request.form.get('txtDesignation')
-    s = request.form.get('txtSalary')
+    emp = Registration.query.get(request.form.get('txtEmpID'))
 
-    cur = mysql.connection.cursor()
-    cur.execute(
-        'UPDATE registration SET empname=%s, email=%s, mobile=%s, designation=%s, salary=%s WHERE emyid=%s',
-        (n, e, m, d, s, i)
-    )
-    mysql.connection.commit()
-    cur.close()
+    emp.empname = request.form.get('txtName')
+    emp.email = request.form.get('txtEmailID')
+    emp.mobile = request.form.get('txtMobile')
+    emp.designation = request.form.get('txtDesignation')
+    emp.salary = request.form.get('txtSalary')
+
+    db.session.commit()
 
     return render_template('update.html')
 
@@ -143,30 +137,28 @@ def delete():
     if not admin_required():
         return redirect(url_for('adminlogin'))
 
-    emp_id = request.args.get('id')
+    emp = Registration.query.get(request.args.get('id'))
 
-    cur = mysql.connection.cursor()
-    cur.execute('DELETE FROM registration WHERE emyid=%s', (emp_id,))
-    mysql.connection.commit()
-    cur.close()
+    db.session.delete(emp)
+    db.session.commit()
 
     return render_template('delete.html')
 
 # ================= SEARCH =================
-@erp.route('/search', methods=['POST'])
+@erp.route('/searchemployee', methods=['POST'])
 def search():
     if not admin_required():
         return redirect(url_for('adminlogin'))
 
     name = request.form.get('name')
 
-    cur = mysql.connection.cursor()
-    cur.execute(
-        'SELECT emyid, empname, designation FROM registration WHERE empname LIKE %s',
-        (name + '%',)
-    )
-    recordlist = cur.fetchall()
-    cur.close()
+    recordlist = Registration.query.filter(
+        Registration.empname.like(name + '%')
+    ).with_entities(
+        Registration.emyid,
+        Registration.empname,
+        Registration.designation
+    ).all()
 
     return render_template('search.html', emplist=recordlist)
 
@@ -176,6 +168,6 @@ def logout():
     session.clear()
     return redirect(url_for('adminlogin'))
 
-# ================= RUN APP =================
+# ================= RUN =================
 if __name__ == '__main__':
     erp.run(debug=True)
