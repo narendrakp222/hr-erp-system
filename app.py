@@ -51,6 +51,9 @@ def adminlogin():
     return render_template('adminlogin.html')
 
 # ================= ADMIN LOGIN =================
+ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME', 'admin')
+ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'super')
+
 @erp.route('/admindashboard', methods=['POST', 'GET'])
 def admindashboard():
     # GET: show dashboard directly if already logged in
@@ -62,7 +65,7 @@ def admindashboard():
     username = request.form.get('username')
     password = request.form.get('password')
 
-    if username == 'admin' and password == 'super':
+    if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
         session['login'] = True
         session['name'] = 'Ram'
         return render_template('admindas.html')
@@ -158,12 +161,16 @@ def delete():
     return render_template('delete.html')
 
 # ================= SEARCH =================
-@erp.route('/searchemployee', methods=['POST'])
+@erp.route('/searchemployee', methods=['POST', 'GET'])
 def search():
     if not admin_required():
         return redirect(url_for('adminlogin'))
 
     name = request.form.get('name')
+
+    # GET (e.g. opened directly in browser): show the search page
+    if request.method == 'GET' or not name:
+        return render_template('searchemploy.html')
 
     recordlist = Registration.query.filter(
         Registration.empname.like(name + '%')
