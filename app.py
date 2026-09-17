@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import os
 
-erp = Flask(__name__)
+basedir = os.path.abspath(os.path.dirname(__file__))
+erp = Flask(__name__, template_folder=os.path.join(basedir, 'templates'), static_folder=os.path.join(basedir, 'static'))
 
 # ================= CONFIG =================
-import os
 erp.secret_key = os.environ.get('SECRET_KEY', 'nepal')
 
 # SQLite database — use /tmp on Vercel (only writable location in serverless)
